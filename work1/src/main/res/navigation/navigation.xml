@@ -3,11 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation.xml"
-    app:startDestination="@id/firstFilmFragment">
-
+    app:startDestination="@id/menuFragment">
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.work1.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_firstFilmFragment"
+            app:destination="@id/firstFilmFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/menuFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_secondFilmFragment"
+            app:destination="@id/secondFilmFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/menuFragment" />
+    </fragment>
     <fragment
         android:id="@+id/firstFilmFragment"
         android:name="com.example.work1.FirstFilmFragment"
         android:label="fragment_first_film"
         tools:layout="@layout/fragment_first_film" />
+    <fragment
+        android:id="@+id/secondFilmFragment"
+        android:name="com.example.work1.SecondFilmFragment"
+        android:label="fragment_second_film"
+        tools:layout="@layout/fragment_second_film" />
 </navigation>

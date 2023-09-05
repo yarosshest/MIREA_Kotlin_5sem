@@ -3,6 +3,9 @@ package com.example.work1
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import com.example.work1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,5 +16,19 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        binding.detail.setOnClickListener {
+            supportFragmentManager.commit {
+                replace<TextFragment>(R.id.fragmentContainerView)
+                setReorderingAllowed(true)
+                addToBackStack(null) // Name can be null
+            }
+        }
+
+        binding.exit.setOnClickListener {
+            val intent = Intent(this, MenuActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

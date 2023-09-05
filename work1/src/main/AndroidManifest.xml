@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MIREA_Kotlin_5sem">
         <activity
+            android:name=".MenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".SecondFilm"
             android:exported="false" />
         <activity
