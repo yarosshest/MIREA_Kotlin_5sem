@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation.xml"
+    app:startDestination="@id/firstFilmFragment">
+
+    <fragment
+        android:id="@+id/firstFilmFragment"
+        android:name="com.example.work1.FirstFilmFragment"
+        android:label="fragment_first_film"
+        tools:layout="@layout/fragment_first_film" />
+</navigation>
