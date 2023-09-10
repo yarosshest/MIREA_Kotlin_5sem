@@ -25,7 +25,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="500dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/fores" />
+                    />
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
@@ -40,7 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="500dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/getsbi" />
+                    />
             </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>

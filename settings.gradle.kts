@@ -17,3 +17,4 @@ rootProject.name = "MIREA_Kotlin_5sem"
 include(":app")
 include(":work1")
 include(":work2")
+include(":work2")

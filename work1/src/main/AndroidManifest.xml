@@ -12,12 +12,6 @@
             android:name=".MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".SecondFilm"
-            android:exported="false" />
-        <activity
-            android:name=".TextActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
