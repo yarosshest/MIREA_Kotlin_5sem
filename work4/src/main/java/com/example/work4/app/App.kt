@@ -1,15 +1,10 @@
 package com.example.work4.app
 
 import android.app.Application
-import com.example.work4.modules.AppComponent
-import com.example.work4.modules.DaggerAppComponent
+import dagger.hilt.android.HiltAndroidApp
 
-open class App : Application() {
-    private lateinit var appComponent: AppComponent
+//import com.example.work4.modules.DaggerAppComponent
+@HiltAndroidApp
+class App : Application() {
 
-    override fun onCreate() {
-        super.onCreate()
-
-        appComponent = DaggerAppComponent.builder().roomModule()
-    }
 }

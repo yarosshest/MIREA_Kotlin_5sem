@@ -11,10 +11,11 @@ data class RegisterStatus(
     var status : Boolean = false,
     var registerError : String = ""
 )
-class RegisterRepository() {
-
+class RegisterRepository@Inject constructor(
+    private val userDao: UserDao
+) {
     private val registerStatus = MutableLiveData<RegisterStatus>()
-    fun registerUser(login : String, pass : String, userDao: UserDao) {
+    fun registerUser(login : String, pass : String) {
         val userRepository = UserRepository(userDao = userDao)
 
         val regStatus = RegisterStatus()
