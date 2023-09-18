@@ -6,11 +6,11 @@ import java.util.concurrent.TimeUnit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitHelper {
-    private const val BASE_URL = "http://172.29.48.1:8031/"
+    private const val BASE_URL = "http://192.168.0.107:8031/"
     private val client: OkHttpClient = OkHttpClient.Builder()
-        .connectTimeout(5, TimeUnit.MINUTES)
-        .readTimeout(5, TimeUnit.MINUTES)
-        .writeTimeout(5, TimeUnit.MINUTES)
+        .connectTimeout(1, TimeUnit.SECONDS)
+        .readTimeout(1, TimeUnit.SECONDS)
+        .writeTimeout(1, TimeUnit.SECONDS)
         .cookieJar(MyCookieJar())
         .build()
 

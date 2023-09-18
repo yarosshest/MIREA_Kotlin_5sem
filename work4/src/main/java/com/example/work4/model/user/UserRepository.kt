@@ -9,7 +9,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class UserNotFoundException(message: String = "User not found") : Exception(message)
+class UserAlreadyExistsException(message: String = "User already exists") : Exception(message)
 
 class UserRepository(private val userDao: UserDao) {
 
@@ -31,8 +31,25 @@ class UserRepository(private val userDao: UserDao) {
             userDao.insertUser(User(login = login, password = pass))
             return true
         } else {
+            if (response.code() == 405){
+                throw UserAlreadyExistsException()
+            }
+        }
+
+        return false
+    }
+
+    fun loginUser(login : String, pass :String): Boolean {
+        val response = api.login(
+            login = login,
+            password = pass
+        ).execute()
+
+        if (response.isSuccessful){
+            return true
+        } else {
             if (response.code() == 404){
-                throw UserNotFoundException()
+                throw UserAlreadyExistsException()
             }
         }
 

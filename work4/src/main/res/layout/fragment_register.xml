@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".authorization.RegisterFragment">
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -49,11 +51,13 @@
             android:id="@+id/textError"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/red"
+            android:textColor="#F44336"
+            android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/edittTextTextLogin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="User already exists" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
