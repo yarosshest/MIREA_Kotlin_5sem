@@ -1,18 +1,9 @@
 package com.example.work4.api
 
+import com.example.work4.model.film.Film
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.POST
 import retrofit2.http.Query
-import java.util.Dictionary
-
-data class Film (
-    val id : Int,
-    val photo : String,
-    val name: String,
-    val description: String
-)
 
 
 interface Api {

@@ -72,12 +72,8 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     }
 
     private fun updateFragment(status: RegisterStatus){
-
-
-        Log.d("observe",  status.registerError)
-        Log.d("status",  status.status.toString())
         if (status.status){
-            findNavController().navigate(R.id.loginFragment)
+            findNavController().navigate(R.id.menuActivity)
         }
         if( status.registerError != ""){
             binding.textError.text = status.registerError
@@ -88,7 +84,4 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         super.onDestroyView()
         _binding = null
     }
-
-
-
 }

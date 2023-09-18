@@ -10,6 +10,7 @@ import retrofit2.Response
 
 
 class UserAlreadyExistsException(message: String = "User already exists") : Exception(message)
+class UserNotFoundException(message: String = "User not found") : Exception(message)
 
 class UserRepository(private val userDao: UserDao) {
 
@@ -49,10 +50,9 @@ class UserRepository(private val userDao: UserDao) {
             return true
         } else {
             if (response.code() == 404){
-                throw UserAlreadyExistsException()
+                throw UserNotFoundException()
             }
         }
-
         return false
     }
 
