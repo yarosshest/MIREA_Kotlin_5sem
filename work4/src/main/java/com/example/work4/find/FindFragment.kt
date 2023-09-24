@@ -11,6 +11,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.widget.SearchView
 import androidx.lifecycle.viewModelScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.work4.R
 import com.example.work4.databinding.FragmentFindBinding
@@ -58,6 +59,8 @@ class FindFragment : Fragment(R.layout.fragment_find) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.filmRecyclerView.layoutManager = GridLayoutManager(context, 3)
+
         binding.searchName.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 if (p0 != null) {
@@ -71,9 +74,30 @@ class FindFragment : Fragment(R.layout.fragment_find) {
             }
         })
 
+        viewModel.findStatus.observe(viewLifecycleOwner){
+            if (viewModel.findStatus.value?.status == true)
+            {
+                val adap = viewModel.createAdapter(viewModel.listFilms.value!!)
+                binding.filmRecyclerView.adapter = adap
+                binding.textError.text = ""
+            }
+            if(viewModel.findStatus.value?.findError != ""){
+                binding.textError.text = viewModel.findStatus.value?.findError
+            }
+
+        }
+
         viewModel.listFilms.observe(viewLifecycleOwner){
-            val adap = viewModel.createAdapter(viewModel.listFilms.value!!)
-            binding.filmRecyclerView.adapter = adap
+            if (viewModel.findStatus.value?.status == true)
+            {
+                val adap = viewModel.createAdapter(viewModel.listFilms.value!!)
+                binding.filmRecyclerView.adapter = adap
+                binding.textError.text = ""
+            }
+
+            if(viewModel.findStatus.value?.findError != ""){
+                binding.textError.text = viewModel.findStatus.value?.findError
+            }
         }
 
     }

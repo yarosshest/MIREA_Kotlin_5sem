@@ -25,5 +25,9 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideYourDao(db: AppDatabase) = db.getUserDao()
+    fun provideUserDao(db: AppDatabase) = db.getUserDao()
+
+    @Singleton
+    @Provides
+    fun provideFilmDao(db: AppDatabase) = db.getFilmDao()
 }

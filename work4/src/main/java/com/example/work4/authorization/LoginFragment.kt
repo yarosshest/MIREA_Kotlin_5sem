@@ -13,6 +13,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.example.work4.R
 import com.example.work4.databinding.FragmentLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -29,6 +30,7 @@ private val repository: LoginRepository
         }
     }
 }
+@AndroidEntryPoint
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private lateinit var viewModel: LoginViewModel
@@ -48,6 +50,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
+
         binding.buttonRegister.setOnClickListener {
             findNavController().navigate(R.id.registerFragment)
         }
@@ -66,7 +69,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun updateFragment(status: LoginStatus){
         if (status.status){
-            findNavController().navigate(R.id.loginFragment)
+            findNavController().navigate(R.id.menuActivity)
         }
         if( status.loginError != ""){
             binding.textError.text = status.loginError

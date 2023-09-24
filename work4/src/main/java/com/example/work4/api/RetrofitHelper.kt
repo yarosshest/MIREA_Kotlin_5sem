@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitHelper {
-    private const val BASE_URL = "http://192.168.0.107:8031/"
+    private const val BASE_URL = "http://192.168.96.1:8031/"
     private val client: OkHttpClient = OkHttpClient.Builder()
         .connectTimeout(1, TimeUnit.SECONDS)
         .readTimeout(1, TimeUnit.SECONDS)

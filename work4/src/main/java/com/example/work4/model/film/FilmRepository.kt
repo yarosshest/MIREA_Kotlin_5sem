@@ -8,6 +8,10 @@ class ProductsNotFoundException(message: String = "Products not found") : Except
 class FilmRepository(private val filmDao: FilmDao)  {
     private val api = RetrofitHelper.getInstance().create(Api::class.java)
 
+    fun getAllFilms():List<Film>{
+        return filmDao.getAllFilms()
+    }
+
     fun findFilms(line : String): List<Film>? {
         val response = api.find(
             line = line,
@@ -17,7 +21,7 @@ class FilmRepository(private val filmDao: FilmDao)  {
             val films = response.body()
             if (films != null) {
                 for (f in films)
-                    filmDao.insertFilm(f)
+                    filmDao.lightInsert(f)
                 return films
             }
             throw ProductsNotFoundException()

@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.work4.model.film.Film
 import com.example.work4.model.film.FilmDao
 import com.example.work4.model.film.FilmRepository
+import com.example.work4.model.film.ProductsNotFoundException
 import com.example.work4.model.user.UserNotFoundException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -32,8 +33,8 @@ class FindRepository@Inject constructor(
 
                 listFilms.postValue(films)
                 status.status = true
-
-            } catch (e: UserNotFoundException) {
+                status.findError = ""
+            } catch (e: ProductsNotFoundException) {
                 status.status = false
                 status.findError = e.message.toString()
             }
