@@ -1,0 +1,37 @@
+package com.example.work8.model.film
+
+import com.example.work8.api.Api
+import com.example.work8.api.RetrofitHelper
+
+class ProductsNotFoundException(message: String = "Products not found") : Exception(message)
+
+class FilmRepository(private val filmDao: FilmDao)  {
+    private val api = RetrofitHelper.getInstance().create(Api::class.java)
+
+    fun getAllFilms():List<Film>{
+        return filmDao.getAllFilms()
+    }
+
+    fun findFilms(line : String): List<Film>? {
+        val response = api.find(
+            line = line,
+        ).execute()
+
+        if (response.isSuccessful){
+            val films = response.body()
+            if (films != null) {
+                for (f in films)
+                    filmDao.lightInsert(f)
+                return films
+            }
+            throw ProductsNotFoundException()
+        } else {
+            if (response.code() == 404){
+                throw ProductsNotFoundException()
+            }
+        }
+        return null
+    }
+
+
+}
