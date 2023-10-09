@@ -104,4 +104,5 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation("androidx.compose.material:material:1.5.3")
     implementation("androidx.compose.runtime:runtime-livedata:1.5.3")
+    implementation ("androidx.work:work-runtime-ktx:2.8.1")
 }

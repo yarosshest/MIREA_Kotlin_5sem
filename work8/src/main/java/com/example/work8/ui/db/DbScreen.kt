@@ -2,6 +2,7 @@ package com.example.work8.ui.db
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.icons.Icons
@@ -38,30 +39,16 @@ fun DbScreen (
     ) {
         var query by rememberSaveable { mutableStateOf("") }
         var active by rememberSaveable { mutableStateOf(false) }
+        viewModel.getAllFilms()
 
         val films = viewModel.listFilms.observeAsState()
 
-        SearchBar(
-            query = query,
-            onQueryChange = { query = it },
-            onSearch = { viewModel.findFilms(query) },
-            active = active,
-            onActiveChange ={
-                active = it
-            } ,
-            placeholder = { Text("Hinted search text") },
-            leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
-            trailingIcon = { Icon(Icons.Default.MoreVert, contentDescription = null) },
-        ) {
 
-        }
-
-        LazyVerticalGrid(
-            columns = GridCells.Adaptive(minSize = 128.dp)
+        LazyColumn(
         ) {
             films.value?.let {
                 items(it.size) { i ->
-                    FilmItem(films.value!![i])
+                    Text(text = films.value!![i].name)
                 }
             }
         }
